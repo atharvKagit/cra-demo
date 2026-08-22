@@ -1,0 +1,1 @@
+# Demo-only; no install required for CRA scanners.
