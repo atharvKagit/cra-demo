@@ -64,18 +64,19 @@ curl http://localhost:3000/health
 
 ### B2. Push local `test_repos/cra-demo` as `main`
 
+Local git is **already initialized** with:
+
+- `main` — clean baseline (`api.py` + `app.py` + helpers)
+- `feature/dashboard-title-demo` — PR branch that worsens `get_user` SQL
+
 ```bash
 cd /home/atharv/Code_Review_Assistant/test_repos/cra-demo
-git init
-git checkout -b main
-git add .
-git commit -m "chore: initial cra-demo main branch"
 git remote add origin https://github.com/YOUR_GITHUB_USER/cra-demo.git
 git push -u origin main
+git push -u origin feature/dashboard-title-demo
 ```
 
-If HTTPS push is denied (403), use SSH or GitHub Desktop / browser upload with your login that has write access.
-
+If HTTPS push is denied (403), use SSH or GitHub Desktop / your browser login that has write access.
 ---
 
 ## C. Webhook on cra-demo
@@ -116,29 +117,20 @@ Already true after the initial push.
 
 ### E2. Create a feature branch and change only `app.py`
 
+Already prepared locally for you:
+
+- Branch: `feature/dashboard-title-demo`
+- Commit: unsafe `get_user` change (`OR 1=1`)
+
+After `main` is on GitHub, push this branch:
+
 ```bash
 cd /home/atharv/Code_Review_Assistant/test_repos/cra-demo
-git checkout -b feature/dashboard-title-demo
-```
-
-Edit `app.py` — add a small intentional change, for example a comment and a slightly worse query:
-
-```python
-def get_user(user_id):
-    """Return a user row. Intentionally builds SQL with string concat for demos."""
-    safe_id = clean_user_id(user_id)
-    # DEMO: still unsafe for CRA scanners / LLM
-    return query(f"SELECT * FROM users WHERE id = '{safe_id}' OR 1=1")
-```
-
-Then:
-
-```bash
-git add app.py
-git commit -m "fix: demonstrate unsafe get_user for CRA review"
+git push -u origin main
 git push -u origin feature/dashboard-title-demo
 ```
 
+(If you already pushed `main` in step B2, only push the feature branch.)
 ### E3. Open PR on GitHub
 
 - Base: `main`
