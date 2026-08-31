@@ -2,6 +2,8 @@
 
 Fresh demo repository for **Code Review Assistant**.
 
+**Quality gate merge test (PR #15):** first commit fails the gate; follow-up commit restores `get_user` with parameterized queries to pass.
+
 Use this repo to verify:
 
 1. PR reviews (scanners + LLM + impact callers)
