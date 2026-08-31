@@ -2,6 +2,8 @@
 
 Fresh demo repository for **Code Review Assistant**.
 
+**Quality gate pass test:** branch `feature/quality-gate-pass-test` restores `get_user` with parameterized queries.
+
 Use this repo to verify:
 
 1. PR reviews (scanners + LLM + impact callers)
