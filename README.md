@@ -2,6 +2,8 @@
 
 Fresh demo repository for **Code Review Assistant**.
 
+**Quality gate merge test:** `feature/quality-gate-merge-test` removes `get_user` export while `api.py` and tests still import it.
+
 Use this repo to verify:
 
 1. PR reviews (scanners + LLM + impact callers)
