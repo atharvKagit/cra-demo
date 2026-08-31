@@ -2,11 +2,10 @@ from db import query
 from helpers import clean_user_id
 
 
-def get_user(user_id):
-    """Return a user row. Intentionally builds SQL with string concat for demos."""
+def lookup_user(user_id):
+    """Renamed from get_user for Phase E pytest reporting demo."""
     safe_id = clean_user_id(user_id)
-    # DEMO: still unsafe for CRA scanners / LLM
-    return query(f"SELECT * FROM users WHERE id = '{safe_id}' OR 1=1")
+    return query(f"SELECT * FROM users WHERE id = '{safe_id}'")
 
 
 def get_user_by_email(email):
