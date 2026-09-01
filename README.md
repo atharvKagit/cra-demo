@@ -2,6 +2,8 @@
 
 Fresh demo repository for **Code Review Assistant**.
 
+**Branch protection pass test:** `feature/branch-protection-pass-test` restores `get_user` with parameterized queries (expect score ≥ 8).
+
 Use this repo to verify:
 
 1. PR reviews (scanners + LLM + impact callers)
